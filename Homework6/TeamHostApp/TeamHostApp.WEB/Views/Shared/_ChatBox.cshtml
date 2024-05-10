@@ -1,0 +1,56 @@
+@model TeamHost.Application.DTOs.Chats.GetChatDetailedResponse
+
+<div class="chat-messages-box">
+    <div class="chat-messages-head">
+        <div class="user-item">
+            <div class="user-item__avatar">
+                <img src="" alt="user">
+            </div>
+            <div class="user-item__desc">
+                <div class="user-item__name">@Model.Title</div>
+            </div>
+        </div>
+        <div>
+            <a class="ico_call" href="#!"></a><a class="ico_info-circle" href="#!"></a>
+        </div>
+    </div>
+    <div class="chat-messages-body">
+        @foreach (var message in Model.Messages)
+        {
+            @if (message.IsSender)
+            {
+                <div class="messages-item --friend-message" id="your-message">
+                    <div class="messages-item__text">@message.Content</div>
+                    <div style="margin-left: 5px" class="sender-name">:@message.SenderName</div>
+                </div>
+            }
+            else
+            {
+                <div class="messages-item --your-message">
+                    <div class="messages-item__avatar">
+                        <img src="" alt="user">
+                    </div>
+                    <div style="margin-right: 5px" class="sender-name">@message.SenderName:</div>
+                    <div class="messages-item__text">@message.Content</div>
+                </div>
+            }
+        }
+    </div>
+    <div class="chat-messages-footer">
+        <form id="form-chat">
+            <div class="chat-messages-form">
+                <input type="hidden" id="chatIdInput" name="chatId" value="@Model.ChatId">
+                <div class="chat-messages-form-btns">
+                    <button class="ico_emoji-happy"></button>
+                    <button class="ico_gallery"></button>
+                </div>
+                <div class="chat-messages-form-controls">
+                    <input class="chat-messages-input" type="text" placeholder="Type a message" required>
+                </div>
+                <div class="chat-messages-form-btn">
+                    <button class="ico_microphone" type="button"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

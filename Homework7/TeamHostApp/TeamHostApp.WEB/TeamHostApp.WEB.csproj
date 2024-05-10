@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>TeamHostApp.WEB</RootNamespace>
+        <UserSecretsId>0d7f1276-95f1-4cb9-886d-965133fcbfa5</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+
+
+        </Content>
+        <PackageReference Include="LiveStreamingServerNet" Version="0.9.1" />
+        <PackageReference Include="LiveStreamingServerNet.Flv" Version="0.9.1" />
+
+        <PackageReference Include="MediatR" Version="12.2.0"/>
+
+
+
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\TeamHost.Application\TeamHost.Application.csproj" />
+      <ProjectReference Include="..\TeamHost.Infrastructure\TeamHost.Infrastructure.csproj" />
+      <ProjectReference Include="..\TeamHost.Persistence\TeamHost.Persistence.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\GameStoreCard.razor" />
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\_Layout.en.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Layout.en.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Update="Resources\Views\Home\Index.en.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Index.en.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\_Layout.en.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Layout.en.resx</DependentUpon>
+      </Compile>
+
+
+    </ItemGroup>
+
+
+
+
+
+
+
+</Project>

@@ -1,0 +1,20 @@
+export default {
+    "grass": "#228B22FF",
+    "fire": "#cd1212",
+    "water": "#185caa",
+    "electric": "#d9a735",
+    "psychic": "#c23794",
+    "fighting": "#de2b2b",
+    "flying": "#a95521",
+    "poison": "#603FEF",
+    "ground": "#6f3517",
+    "rock": "#462203",
+    "bug": "#216b15",
+    "ice": "#74a0c4",
+    "ghost": "#663566",
+    "dark": "#1f1f1f",
+    "steel": "#57b77d",
+    "dragon": "#64bbbb",
+    "normal": "#95537d",
+    "fairy": "#a9143f"
+}

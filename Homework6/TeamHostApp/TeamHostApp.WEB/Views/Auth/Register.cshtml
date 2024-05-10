@@ -1,0 +1,90 @@
+@model TeamHost.Application.DTOs.User.UserRegisterDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TeamHost - Join now and play mighty games!</title>
+    <meta content="Templines" name="author">
+    <meta content="TeamHost" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="~/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/libs.min.css">
+    <link rel="stylesheet" href="~/css/main.css">
+</head>
+
+
+<main class="page-first-screen">
+
+    <!-- Loader-->
+    <div id="page-preloader">
+        <span class="spinner border-t_second_b border-t_prim_a"></span>
+    </div>
+    <!-- Loader end-->
+
+    <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1" data-uk-grid>
+        <div class="logo-big">
+            <img src="~/img/logo-big.png" alt="logo">
+            <span>TeamHost</span>
+            <h1>Join now and play mighty games!</h1>
+        </div>
+        <div>
+            <div class="form-login">
+                <div class="form-login__social">
+                    <ul class="social">
+                        <li>
+                            <a href="http://www.google.com">
+                                <img src="~/img/google.svg" alt="google">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.facebook.com">
+                                <img src="~/img/facebook.svg" alt="facebook">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.twitter.com">
+                                <img src="~/img/twitter.svg" alt="twitter">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-login__box">
+                    <div class="uk-heading-line uk-text-center">
+                        <span>or with Email</span>
+                    </div>
+                    <form asp-action="Register">
+                        <div class="uk-margin">
+                            <input asp-for="Email" class="uk-input" type="email" placeholder="Email">
+                        </div>
+                        <div class="uk-margin">
+                            <input asp-for="Username" class="uk-input" type="text" placeholder="Username">
+                        </div>
+                        <div class="uk-margin">
+                            <input asp-for="Password" class="uk-input" type="password" placeholder="Password">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-button uk-button-danger uk-width-1-1"
+                                   type="submit" value="Register">
+                        </div>
+                        <div class="uk-text-center">
+                            <span>Already have an account?</span><a class="uk-margin-small-left" asp-action="Login">Log In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/libs.js"></script>
+    <script src="~/js/main.js"></script>
+</main>
+</html>

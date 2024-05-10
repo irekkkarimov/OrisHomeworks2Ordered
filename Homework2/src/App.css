@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.search-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-page__header {
+    width: 100%;
+    height: 200px;
+    flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: #072AC8;
+    background-repeat: no-repeat;
+    background-size: unset;
+}
+
+.search-page__header__pokeball {
+    width: 100px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}
+
+.search-page__header__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 0 20px;
+}
+
+.search-page__header__text {
+    margin-right: 40px;
+}
+
+.search-page__header__text h2 {
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.search-page__header__sb {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color: #ffffff;
+}
+
+.search-page__header__sb__img {
+    height: 35px;
+    margin-left: 3px;
+}
+
+.search-page__header__sb__input {
+    width: 100%;
+    font-size: 24px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.search-page__header__sb__submit {
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    padding: 0 20px;
+    font-family: inherit;
+    background-color: black;
+    color: #ffffff;
+}
+
+
+.search-page__body {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    height: 140px;
+    padding: 6px 9px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .2);
+}
+
+.card__upper {
+    width: inherit;
+    height: 38px;
+    display: flex;
+    align-items: start;
+    margin-top: 2px;
+}
+
+.card__upper__wrapper {
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__pic {
+    width: inherit;
+}
+
+.card__pic img {
+    width: inherit;
+    object-fit: contain;
+    height: 90px;
+    align-self: start;
+}
+
+
+.card__lower {
+    width: inherit;
+    margin-top: 5px;
+    display: flex;
+}
+
+.card__lower__option {
+    padding: 2px 8px;
+    border-radius: 3px
+}
+
+.card__lower__option p {
+    color: aliceblue;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.card__upper__name {
+    color: royalblue;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.card__upper__id {
+    font-size: 14px;
+}
+
+
+.pokemonNotFound {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemonNotFound__header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.pokemonNotFound img {
+    width: 200px;
+}

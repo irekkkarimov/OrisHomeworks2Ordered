@@ -1,0 +1,269 @@
+
+
+.pokemon-page {
+}
+
+.pokemon-page__body {
+    width: 420px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pokemon-page__header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #072AC8;
+}
+
+.pp__header__arrow {
+    width: 20px;
+}
+
+.pp__header__pokeball {
+    position: absolute;
+    top: -5px;
+    right: 3px;
+    width: 40px;
+}
+
+.pokemon-page__body > div {
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .2);
+}
+
+.pokemon-page__hero {
+    padding: 15px 25px;
+    margin-bottom: 20px;
+}
+
+.pp__hero__upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pp__hero__upper__left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.pp__hero__upper__left__id {
+    margin-bottom: 1px;
+    color: #747373;
+}
+
+.pp__hero__upper__left__name {
+    text-transform: capitalize;
+    color: royalblue;
+    font-size: 28px;
+}
+
+.pp__hero__upper__right {
+    display: flex;
+}
+
+.pp__hero__upper__right__option {
+    padding: 4px 16px;
+    border-radius: 3px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: white;
+}
+
+.pp__hero__upper__right__option:first-child {
+    margin-right: 10px;
+}
+
+.pp__hero__lower {
+    display: flex;
+}
+
+.pp__hero__lower__left {
+    margin-top: 70px;
+    margin-right: 13px;
+}
+
+.pp__hero__lower__left__stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+
+.pp__hero__lower__left__stat p {
+    text-transform: capitalize;
+    margin-bottom: 1px;
+    font-size: 14px;
+}
+
+.bar {
+    width: 130px;
+    height: 6px;
+    border-radius: 100px;
+}
+
+.bar-filled {
+    width: 40px;
+    height: inherit;
+    border-radius: 100px;
+}
+
+.pp__hero__lower__right {
+    box-sizing: border-box;
+}
+
+.pp__hero__lower__right img {
+    width: 250px;
+}
+
+.pokemon-page__breeding {
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}
+
+.pp__breeding__header {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.pp__breeding__lower {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pp__breeding__lower__stat {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pp__breeding__lower__stat > p {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: #626262;
+}
+
+.stat-card {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #f4f4f4;
+    border: 1px solid #d9d9d9;
+    color: #464545;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.pokemon-page__moves {
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}
+
+.pp__moves__header {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.pp__moves__lower {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pokemon-move-card {
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    background-color: #58ae58;
+    color: white;
+    border-radius: 10px;
+}
+
+.pokemon-move-card > p {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.pokemon-move-card__icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.pokemon-page__abilities {
+    padding: 20px 30px;
+}
+
+.pp__abilities__header {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.pp__abilities__lower {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ability-card {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    padding: 25px 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: coral;
+}
+
+.ability-card > p {
+    text-transform: capitalize;
+}
+
+.ability-card__icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.ability-card__icon > p {
+    box-sizing: border-box;
+    text-transform: capitalize;
+    color: coral;
+    font-size: 20px;
+    margin: 0;
+    align-self: center;
+}

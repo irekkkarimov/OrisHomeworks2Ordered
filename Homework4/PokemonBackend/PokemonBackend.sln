@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonAPI", "PokemonAPI\PokemonAPI.csproj", "{01416643-A9AF-4435-8CB9-82FC52836799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5FB6A76D-C1A8-4B0C-9945-536C29938FF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{5720C411-2975-41CC-B3E1-0ADA43977076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{8133CE5B-7598-4595-A353-0D0404A63A88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01416643-A9AF-4435-8CB9-82FC52836799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01416643-A9AF-4435-8CB9-82FC52836799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01416643-A9AF-4435-8CB9-82FC52836799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01416643-A9AF-4435-8CB9-82FC52836799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB6A76D-C1A8-4B0C-9945-536C29938FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB6A76D-C1A8-4B0C-9945-536C29938FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB6A76D-C1A8-4B0C-9945-536C29938FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB6A76D-C1A8-4B0C-9945-536C29938FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5720C411-2975-41CC-B3E1-0ADA43977076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5720C411-2975-41CC-B3E1-0ADA43977076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5720C411-2975-41CC-B3E1-0ADA43977076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5720C411-2975-41CC-B3E1-0ADA43977076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8133CE5B-7598-4595-A353-0D0404A63A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8133CE5B-7598-4595-A353-0D0404A63A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8133CE5B-7598-4595-A353-0D0404A63A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8133CE5B-7598-4595-A353-0D0404A63A88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,31 @@
+@using System.Security.Claims
+@model List<TeamHost.Application.DTOs.Chats.GetChatDtoItem>
+
+@{
+    var userId = Context.User.Claims.FirstOrDefault(i => i.Type == ClaimTypes.NameIdentifier)?.Value;
+}
+
+<ul>
+    @foreach (var chat in Model)
+    {
+        var img = chat.Image is null ? "" : $"{chat.Image.Path}{chat.Image.Name}{chat.Image.Extension}";
+
+        <li id="friend-id=@(chat.FriendId is not null ? chat.FriendId.Value : "")">
+            <div class="user-item --active" data-message-id="@chat.ChatId">
+                <div class="user-item__avatar">
+                    <img src="@img" alt="user">
+                </div>
+                <div class="user-item__desc">
+                    <div class="user-item__name">@chat.Title</div>
+                    <div class="user-item__text">
+                        @(chat.LastMessage is not null
+                            ? chat.LastMessage.SenderId.ToString().Equals(userId)
+                                ? $"You: {chat.LastMessage.Content}"
+                                : $"{chat.LastMessage.SenderName}: {chat.LastMessage.Content}"
+                            : "")
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
