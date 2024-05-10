@@ -1,0 +1,8 @@
+# Ignore all 'bin' directories
+bin/
+
+# Ignore all 'obj' directories
+obj/
+
+# Ignore all '.idea' directories
+.idea/
