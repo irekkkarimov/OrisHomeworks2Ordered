@@ -1,0 +1,148 @@
+@model TeamHost.Application.DTOs.Wallet.GetWalletInfoResponse
+
+@{
+    Layout = Layout;
+}
+
+
+<main class="page-main">
+
+    <!-- Loader-->
+    <div id="page-preloader">
+        <span class="spinner border-t_second_b border-t_prim_a"></span>
+    </div>
+    <!-- Loader end-->
+
+    <div class="uk-grid" data-uk-grid>
+        <div class="uk-width-2-3@l">
+            <div class="widjet --wallet">
+                <div class="widjet__head">
+                    <h3 class="uk-text-lead">Wallet</h3>
+                </div>
+                <div class="widjet__body">
+                    <div class="wallet-info">
+                        <div class="wallet-value">@Model.Balance USD</div>
+                        <div class="wallet-label">Available</div>
+                    </div>
+                </div>
+            </div>
+            <div class="widjet --activities">
+                <div class="widjet__head">
+                    <h3 class="uk-text-lead">Activities</h3>
+                </div>
+                <div class="widjet__body">
+                    <ul class="activities-list">
+                        @foreach (var purchase in Model.Purchases)
+                        {
+                            var img = purchase.ImageUrl is null
+                                ? ""
+                                : $"{purchase.ImageUrl.Path}{purchase.ImageUrl.Name}{purchase.ImageUrl.Extension}";
+                            <li class="activities-item">
+                                <div class="activities-item__logo">
+                                    <a asp-controller="GameProfile" asp-action="Index">
+                                        <img src="@img" alt="image">
+                                    </a>
+                                </div>
+                                <div class="activities-item__info">
+                                    <a
+                                        asp-controller="GameProfile"
+                                        asp-action="Index"
+                                        class="activities-item__title">
+                                        @purchase.GameName
+                                    </a>
+                                    <div class="activities-item__date">@purchase.PurchaseDate</div>
+                                </div>
+                                <div class="activities-item__price">-@purchase.Price USD</div>
+                            </li>
+                        }
+                        <li class="activities-item">
+                            <div class="activities-item__logo">
+                                <a href="10_game-profile.html">
+                                    <img src="~/img/activities-2.png" alt="image">
+                                </a>
+                            </div>
+                            <div class="activities-item__info">
+                                <a class="activities-item__title" href="10_game-profile.html"> Counter-Strike: G...</a>
+                                <div class="activities-item__date">25 Apr, 2020</div>
+                            </div>
+                            <div class="activities-item__price">-14.99 USD</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-3@l">
+            <div class="widjet --payment-method">
+                <div class="widjet__head">
+                    <h3 class="uk-text-lead">Payment Method</h3>
+                </div>
+                <div class="widjet__body">
+                    <div style="margin-bottom: 10px;">
+                        <input id="deposit-input" type="number">
+                        <button
+                            onclick="{
+                            let inputValue = document.getElementById('deposit-input')
+                            console.log(typeof inputValue.value)
+                            if (inputValue.value === undefined || inputValue.value === '' || inputValue.value <= 0) {
+                                alert('Deposit must be positive number!')
+                                return
+                            }
+                            
+                            fetch('http://localhost:5279/Wallet/Deposit', {
+                                method: 'patch',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    money: inputValue.value
+                                })
+                            })
+                            .then(response => {
+                                if (response.status === 200) {
+                                    alert('Successfully deposited!')
+                                    window.location.reload()
+                                }
+                                else
+                                    alert('Something went wrong!')
+                            })
+                            }">
+                            Deposit money
+                        </button>
+                    </div>
+                    <div>
+                        <input id="withdraw-input" type="number">
+                        <button onclick="{
+                            let inputValue = document.getElementById('withdraw-input')
+                            if (inputValue.value === undefined || inputValue.value === '' || inputValue.value <= 0) {
+                                alert('Withdraw must be positive number!')
+                                return
+                            }
+                            
+                            fetch('http://localhost:5279/Wallet/Withdraw', {
+                                method: 'patch',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    money: inputValue.value
+                                })
+                            })
+                            .then(response => {
+                                if (response.status === 200) {
+                                    alert('Successfully withdrawn!')
+                                    window.location.reload()
+                                }
+                                else
+                                    alert('Something went wrong!')
+                            })
+                            }">
+                            Withdraw money
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/libs.js"></script>
+    <script src="~/js/main.js"></script>
+</main>

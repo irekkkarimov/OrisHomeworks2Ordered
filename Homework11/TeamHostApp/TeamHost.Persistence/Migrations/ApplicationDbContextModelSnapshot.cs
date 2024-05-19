@@ -582,6 +582,57 @@ namespace TeamHost.Persistence.Migrations
                     b.ToTable("UserInfos");
                 });
 
+            modelBuilder.Entity("TeamHost.Domain.Entities.WalletEntities.GamePurchase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("WalletId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("WalletId");
+
+                    b.ToTable("GamePurchase");
+                });
+
+            modelBuilder.Entity("TeamHost.Domain.Entities.WalletEntities.Wallet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Money")
+                        .HasColumnType("float");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Wallets");
+                });
+
             modelBuilder.Entity("CategoryGame", b =>
                 {
                     b.HasOne("TeamHost.Domain.Entities.GameEntities.Category", null)
@@ -756,6 +807,34 @@ namespace TeamHost.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("TeamHost.Domain.Entities.WalletEntities.GamePurchase", b =>
+                {
+                    b.HasOne("TeamHost.Domain.Entities.GameEntities.Game", "Game")
+                        .WithMany("GamePurchases")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("TeamHost.Domain.Entities.WalletEntities.Wallet", "Wallet")
+                        .WithMany("GamePurchases")
+                        .HasForeignKey("WalletId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Wallet");
+                });
+
+            modelBuilder.Entity("TeamHost.Domain.Entities.WalletEntities.Wallet", b =>
+                {
+                    b.HasOne("TeamHost.Domain.Entities.UserEntities.User", "User")
+                        .WithOne("Wallet")
+                        .HasForeignKey("TeamHost.Domain.Entities.WalletEntities.Wallet", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TeamHost.Domain.Entities.ChatEntities.Chat", b =>
                 {
                     b.Navigation("Messages");
@@ -770,12 +849,21 @@ namespace TeamHost.Persistence.Migrations
 
             modelBuilder.Entity("TeamHost.Domain.Entities.GameEntities.Game", b =>
                 {
+                    b.Navigation("GamePurchases");
+
                     b.Navigation("Images");
                 });
 
             modelBuilder.Entity("TeamHost.Domain.Entities.UserEntities.User", b =>
                 {
                     b.Navigation("UserInfo");
+
+                    b.Navigation("Wallet");
+                });
+
+            modelBuilder.Entity("TeamHost.Domain.Entities.WalletEntities.Wallet", b =>
+                {
+                    b.Navigation("GamePurchases");
                 });
 #pragma warning restore 612, 618
         }

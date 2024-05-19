@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="FluentValidation" Version="11.9.0" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.16" />
+      <PackageReference Include="Redis.OM" Version="0.7.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Exceptions\" />
+      <Folder Include="Common\Mappings\" />
+      <Folder Include="DTOs\Email\" />
+      <Folder Include="Features\Games\Commands\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared\Shared.csproj" />
+      <ProjectReference Include="..\TeamHost.Domain\TeamHost.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,156 @@
+@model TeamHost.Application.DTOs.Game.GetGameDto
+
+@{
+    Layout = Layout;
+    var mainImage = Model.MainImage;
+    var img = mainImage is null ? "" : $"../{mainImage.Path}{mainImage.Name}{mainImage.Extension}";
+}
+
+
+<main class="page-main">
+
+    <!-- Loader-->
+    <div id="page-preloader">
+        <span class="spinner border-t_second_b border-t_prim_a"></span>
+    </div>
+    <!-- Loader end-->
+
+    <ul class="uk-breadcrumb">
+        <li>
+            <a asp-action="Index" asp-controller="Store">
+                <span data-uk-icon="chevron-left"></span><span>Back to Store</span>
+            </a>
+        </li>
+        <li>
+            <span>@Model.Name</span>
+        </li>
+    </ul>
+    <h3 class="uk-text-lead">@Model.Name</h3>
+    <div class="uk-grid uk-grid-small" data-uk-grid>
+        <div class="uk-width-2-3@xl">
+            <div class="gallery">
+                <div class="js-gallery-big gallery-big">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="~/img/c0.jpg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c1.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c2.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c3.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c4.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c5.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <iframe src="https://www.youtube.com/embed/IUYs3mYgEPI" width="1920" height="1080" allowfullscreen data-uk-responsive></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="js-gallery-small gallery-small">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="~/img/c0.jpg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c1.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c2.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c3.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c4.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/c5.jpeg" alt="image">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="~/img/cv.jpg" alt="image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-3@xl">
+            <div class="game-profile-card">
+                <div class="game-profile-card__media">
+                    <img src="@img" alt="game-profile-card">
+                </div>
+                <div class="game-profile-card__intro">
+                    <span>@Model.Description</span>
+                </div>
+                <ul class="game-profile-card__list">
+                    <li>
+                        <div>Reviews:</div>
+                        <div class="game-card__rating">
+                            <span>@Model.Rating</span><i class="ico_star"></i><span class="rating-vote">(433)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Release date:</div>
+                        <div>@Model.ReleaseDate</div>
+                    </li>
+                    <li>
+                        <div>Developer:</div>
+                        <div>@string.Join(',', Model.Companies.Select(i => i.Name))</div>
+                    </li>
+                    <li>
+                        <div>Platforms:</div>
+                        <div class="game-card__platform">
+                            @foreach (var platform in Model.Platforms)
+                            {
+                                <i class="ico_@platform.Name.ToLower()"></i>
+                            }
+                        </div>
+                    </li>
+                </ul>
+                <ul class="game-profile-card__type">
+                    <li>
+                        <span>Strategy</span>
+                    </li>
+                    <li>
+                        <span>Survival</span>
+                    </li>
+                    <li>
+                        <span>City Builder</span>
+                    </li>
+                    <li>
+                        <span>Dark</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="game-profile-price">
+                <div class="game-profile-price__value">$@Model.Price USD</div>
+                @Model.GameId
+                <button
+                    onclick="fetch(`http://localhost:5279/Wallet/PurchaseGame?gameId=@Model.GameId`, {
+                        method: 'post'
+                    })"
+                    class="uk-button uk-button-danger uk-width-1-1" type="button">
+                    <span class="ico_shopping-cart"></span><span>Buy Now</span>
+                </button>
+                <button class="uk-button uk-button-primary uk-width-1-1" type="button">
+                    <span class="ico_add-square"></span><span>Add to Favourites</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/libs.js"></script>
+    <script src="~/js/main.js"></script>
+</main>

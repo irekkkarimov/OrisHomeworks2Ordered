@@ -15,14 +15,14 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
 {
     private readonly IDomainEventDispatcher? _dispatcher;
 
-    public ApplicationDbContext()
-    {
-    }
-
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
         IDomainEventDispatcher dispatcher) : base(options)
     {
         _dispatcher = dispatcher;
+    }
+
+    public ApplicationDbContext()
+    {
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
