@@ -13,4 +13,8 @@ public class User : IdentityUser<Guid>
     /// </summary>
     public UserInfo? UserInfo { get; set; }
     public Wallet? Wallet { get; set; }
+    public List<User> MyFriends { get; set; } = new();
+    public List<User> FriendsWith { get; set; } = new();
+    public List<FriendRequest> RequestsSent { get; set; } = new();
+    public List<FriendRequest> RequestsReceived { get; set; } = new();
 }

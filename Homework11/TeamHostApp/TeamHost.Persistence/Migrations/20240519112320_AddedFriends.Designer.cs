@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamHost.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using TeamHost.Persistence.Contexts;
 namespace TeamHost.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240519112320_AddedFriends")]
+    partial class AddedFriends
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -535,6 +538,9 @@ namespace TeamHost.Persistence.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -548,6 +554,8 @@ namespace TeamHost.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -649,21 +657,6 @@ namespace TeamHost.Persistence.Migrations
                         .IsUnique();
 
                     b.ToTable("Wallets");
-                });
-
-            modelBuilder.Entity("UserUser", b =>
-                {
-                    b.Property<Guid>("FriendsWithId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MyFriendsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("FriendsWithId", "MyFriendsId");
-
-                    b.HasIndex("MyFriendsId");
-
-                    b.ToTable("UserUser");
                 });
 
             modelBuilder.Entity("CategoryGame", b =>
@@ -841,6 +834,13 @@ namespace TeamHost.Persistence.Migrations
                     b.Navigation("Sender");
                 });
 
+            modelBuilder.Entity("TeamHost.Domain.Entities.UserEntities.User", b =>
+                {
+                    b.HasOne("TeamHost.Domain.Entities.UserEntities.User", null)
+                        .WithMany("Friends")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TeamHost.Domain.Entities.UserEntities.UserInfo", b =>
                 {
                     b.HasOne("TeamHost.Domain.Entities.GameEntities.Country", "Country")
@@ -887,21 +887,6 @@ namespace TeamHost.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("UserUser", b =>
-                {
-                    b.HasOne("TeamHost.Domain.Entities.UserEntities.User", null)
-                        .WithMany()
-                        .HasForeignKey("FriendsWithId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TeamHost.Domain.Entities.UserEntities.User", null)
-                        .WithMany()
-                        .HasForeignKey("MyFriendsId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("TeamHost.Domain.Entities.ChatEntities.Chat", b =>
                 {
                     b.Navigation("Messages");
@@ -923,6 +908,8 @@ namespace TeamHost.Persistence.Migrations
 
             modelBuilder.Entity("TeamHost.Domain.Entities.UserEntities.User", b =>
                 {
+                    b.Navigation("Friends");
+
                     b.Navigation("RequestsReceived");
 
                     b.Navigation("RequestsSent");

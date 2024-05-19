@@ -47,4 +47,5 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
     public DbSet<Chat> Chats { get; set; } = null!;
     public DbSet<Message> Messages { get; set; } = null!;
     public DbSet<Wallet> Wallets { get; set; } = null!;
+    public DbSet<FriendRequest> FriendRequests { get; set; }
 }

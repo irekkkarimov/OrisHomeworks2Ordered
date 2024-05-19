@@ -41,8 +41,9 @@ where T : class, IEntity
         await _context.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(T entity)
+    public async Task DeleteAsync(T entity)
     {
-        throw new NotImplementedException();
+        _context.Remove(entity);
+        await _context.SaveChangesAsync();
     }
 }
